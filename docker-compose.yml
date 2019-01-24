@@ -1,0 +1,22 @@
+version: '2'
+services:
+  challange:
+    container_name: sicredi
+    build: .
+    command: ["java","-jar","/tmp/target/challange.jar"]
+    ports:
+      - "8080:8080"
+    links:
+      - db
+
+  db:
+    container_name: db
+    image: postgres
+    ports:
+      - "5435:5432"    
+    environment:
+        POSTGRES_USER: admin  
+        POSTGRES_PASSWORD: password  
+        POSTGRES_DB: sicredi    
+
+   
